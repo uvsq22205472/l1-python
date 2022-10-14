@@ -3,6 +3,8 @@
 
 from pickle import NONE
 
+from numpy import true_divide
+
 
 def tempsEnSecondes(temps):
     """ Renvoie la valeur en seconde de temps donné comme jour, heure, minute, seconde."""
@@ -58,13 +60,50 @@ def NombreEnPluriel(nombre):
         return ''
     
 def afficheTempsDeux(temps):
+    '''Affiche affichage: un string avec le nombre de jours, heures, minutes et secondes en fonction de temps
+    qui est un tuple contenant ces nombres.'''
     affichage = ''
-    affichagetemps = ('jour','heure','minute','seconde')
+    TimeString  = ('jour','heure','minute','seconde')
     for i in range(0,4):
-        affichage += (str(temps[i]) +' '+ affichagetemps[i]+NombreEnPluriel(temps[i])+' ')
+        affichage += (str(temps[i]) +' '+ TimeString[i]+NombreEnPluriel(temps[i])+' ')
     print(affichage)
     
 afficheTempsDeux((3,13,23,1))
-
-def DemandeTemps()
-    temps = 
+#####################################################"
+# 
+def DemandeTemps():
+    '''La fonction demande à l'utilisateur de rentrer des nombres symbolisant des jours, heures, minutes et secondes
+    (avec leurs restrictions) et envoi un tuple contenant cette combinaison pour pouvoir l'utiliser dans les autres 
+    fonctions présentes dans ce fichier.'''
+    
+    DayCheck = ''
+    HourCheck = ''
+    MinuteCheck = ''
+    SecondCheck = ''
+    while DayCheck != True:
+        Day = int(input('Donnez un nombre de jours compris entre 0 et 355'))
+        if Day in range(0,356):
+            DayCheck = True
+        else:
+            DayCheck = False
+    while HourCheck != True:
+        Hour = int(input("Donnez un nombre d'heures compris entre 0 et 23"))
+        if Hour in range(0,24):
+            HourCheck = True
+        else:
+            HourCheck = False
+    while MinuteCheck != True:
+        Minute = int(input('Donnez un nombre de minutes compris entre 0 et 59'))
+        if Minute in range(0,60):
+            MinuteCheck = True
+        else:
+            MinuteCheck = False
+    while SecondCheck != True:
+        Second = int(input('Donnez un nombre de secondes compris entre 0 et 59'))
+        if Second in range(0,60):
+                SecondCheck = True
+        else:
+                SecondCheck = False
+    return((Day,Hour,Minute,Second))
+    
+afficheTempsDeux(DemandeTemps())
