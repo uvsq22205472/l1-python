@@ -66,4 +66,4 @@ def Chrono(temps):
     duration = 30, threaded = True, )
     return None
 
-Chrono(60)
+Chrono(252)
