@@ -1,11 +1,5 @@
 #temps[0] : jours, temps[1]: heures, temps[2]: minutes, temps[3]: secondes
 
-
-from pickle import NONE
-
-from numpy import true_divide
-
-
 def tempsEnSecondes(temps):
     """ Renvoie la valeur en seconde de temps donné comme jour, heure, minute, seconde."""
     Resultat = temps[0]*60**3 + temps[1]*60**2 + temps[2]*60 + temps[3]
@@ -107,3 +101,33 @@ def DemandeTemps():
     return((Day,Hour,Minute,Second))
     
 afficheTempsDeux(DemandeTemps())
+###################################################################
+def SommeTemps(temps1, temps2):
+    '''Convertit deux tuples supposés temps en secondes, puis fais la somme et reconvertit en tuples'''
+    temps1 = tempsEnSecondes(temps1)
+    temps2 = tempsEnSecondes(temps2)
+    somme = temps1 + temps2
+    return secondesEnTemps(somme)
+
+
+print(SommeTemps((2,3,4,25),(5,22,57,1)))
+
+def ProportionTemps(temps,proportion):
+    """"""
+    temps = tempsEnSecondes(temps)
+    temps = ( temps * proportion )
+    return secondesEnTemps(temps) 
+
+
+afficheTemps(ProportionTemps((2,0,36,0),0.2))
+###############################################################3
+def tempsEnDate(temps):
+    
+
+def afficheDate(date = -1):
+    pass
+    
+temps = secondeEnTemps(1000000000)
+afficheTemps(temps)
+afficheDate(tempsEnDate(temps))
+afficheDate()
