@@ -120,14 +120,52 @@ def ProportionTemps(temps,proportion):
 
 
 afficheTemps(ProportionTemps((2,0,36,0),0.2))
-###############################################################3
+###############################################################
+def secondesEnDate(secondes):
+    """Renvoie la date (annee, mois, jour, heure, minute, seconde) qui correspond au nombre de seconde passé en argument"""
+    tempsbrut = secondes / 31536000
+    annees = tempsbrut
+    mois = (annees - int(annees)) * 12
+    jours = (mois - int(mois)) * 30
+    heures = (jours - int(jours)) * 60   
+    minutes = (heures - int(heures)) * 60
+    secondes = (minutes - int(minutes))* 60
+    return (int(annees),int(mois),int(jours),int(heures),int(minutes),int(secondes))
+
 def tempsEnDate(temps):
+    """Prend le temps en secondes et le convertit en date a l'aide de secondesEnDate.
+        Le temps 0 est le 1er janvier 1970 a 00:00:00
+        La date finale est exprimee en:
+        annees, mois, jours, heures, minutes et secondes."""
+    # le temps 0 est le 1 janvier 1970 à 00:00:00.
+    date = (1970,1,1,0,0,0)
+    temps = secondesEnDate(temps)
+    date = list(date)
+    temps = list(temps)
+    
+    for i in range(0,5):
+        date[i] = date[i] + temps[i]
+    while date[5] > 60:
+        date[5] -= 60
+        date[4] += 1
+    while date[4] > 60:
+        date[4] -= 60
+        date[3] += 1
+    while date[3] > 24:
+        date[3] -= 24
+        date[2] += 1
+    while date[2] > 30:
+        date[3] -= 30
+        date[2] += 1
+    while date[1] > 30:
+        date[1] -= 30
+        date[0] += 1
+    date = tuple(date)
+    return(date))
+
+tempsEnDate(31536000)
+
     
 
 def afficheDate(date = -1):
     pass
-    
-temps = secondeEnTemps(1000000000)
-afficheTemps(temps)
-afficheDate(tempsEnDate(temps))
-afficheDate()
