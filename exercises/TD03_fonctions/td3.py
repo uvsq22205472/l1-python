@@ -167,5 +167,5 @@ tempsEnDate(31536000)
 
     
 
-def afficheDate(date = -1):
-    pass
+def afficheDate(date):
+    
