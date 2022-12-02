@@ -161,11 +161,6 @@ def tempsEnDate(temps):
         date[1] -= 30
         date[0] += 1
     date = tuple(date)
-    return(date))
+    return(date)
 
 tempsEnDate(31536000)
-
-    
-
-def afficheDate(date):
-    
